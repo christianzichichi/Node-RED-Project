@@ -1,0 +1,18 @@
+/**
+ *  @author Andrea Mola, Nicola Pignatelli and Maria Silvia Abba Legnazzi
+ */
+
+#ifndef CLUSTERSERIAL_H
+#define CLUSTERSERIAL_H
+
+typedef nx_struct my_serial_msg  {
+	nx_uint8_t msg_type;
+	nx_uint16_t msg_id;
+	nx_uint16_t value;
+} my_serial_msg_t;
+
+enum{
+AM_MY_SERIAL_MSG = 0x89,
+};
+
+#endif

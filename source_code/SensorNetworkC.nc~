@@ -1,0 +1,59 @@
+/**
+ *  Source file for implementation of module SensorNetworkC in which
+ *  the reply message contains humidity and temperature readings from 
+ *  sensors. 
+ *
+ *  @author Christian Zichichi
+ */
+
+
+#include "Timer.h"
+#include "SensorNetwork.h"
+
+module SensorNetworkC {
+
+  uses {
+	interface Boot;
+ 	interface Receive;
+    	interface AMSend;
+	interface AMPacket;
+	interface Packet;
+  	interface Timer<TMilli> as MilliTimer;
+	interface Read<uint16_t> as TempRead;
+	interface Read<uint16_t> as HumRead;
+	interface SplitControl as AMControl;
+  }
+
+} implementation {
+  uint8_t counter=0; // to know in which step of the cycle we are
+  uint8_t rec_id;
+  
+  //***************** Boot interface ********************//
+  event void Boot.booted() {
+	dbg("boot","Application booted.\n");
+	call AMControl.start(); 
+  }
+  event void AMControl.startDone(error_t err){
+        call MilliTimer.startPeriodic( 1000 );  
+  }
+  event void AMControl.stopDone(error_t err){};
+
+  //***************** MilliTimer interface ********************//
+  event void MilliTimer.fired() {
+	call TempRead.read();
+	call HumRead.read();
+  }
+  
+  //************************* Read interface **********************//
+  event void TempRead.readDone(error_t result, uint16_t data) {
+	float temp = ((float)data/65535)*100;
+	dbg("boot","temp read done %.2f\n",temp);
+  }
+
+  event void HumRead.readDone(error_t result, uint16_t data) {
+	float hum = ((float)data/65535)*100;
+	dbg("boot","hum read done %.2f\n",hum);
+  }
+
+}
+

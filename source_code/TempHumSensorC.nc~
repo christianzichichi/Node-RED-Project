@@ -1,0 +1,33 @@
+/**
+ *  Configuration file for wiring of TempHumSensorP module to other common 
+ *  components to simulate the behavior of a real sensor
+ *
+ *  @author Christian Zichichi
+ */
+
+generic configuration TempHumSensorC() {
+
+	provides interface Read<uint16_t> as TempRead;
+	provides interface Read<uint16_t> as HumRead;
+	provides interface SplitControl;
+
+} implementation {
+
+	components MainC;
+	components new TempHumSensorP();
+	components new TimerMilliC() as ReadTempTimer;
+	components new TimerMilliC() as ReadHumTimer;
+	components new TimerMilliC() as InitTimer;
+
+	//Connects the provided interface
+	TempRead = TempHumSensorP.TempRead;
+	HumRead = TempHumSensorP.HumRead;
+	SplitControl = TempHumSensorP.SplitControl;
+
+	//Timer interface	
+	TempHumSensorP.TimerReadTemp -> ReadTempTimer;
+	TempHumSensorP.TimerReadHum -> ReadHumTimer;
+	TempHumSensorP.TimerInit -> InitTimer;
+
+
+}

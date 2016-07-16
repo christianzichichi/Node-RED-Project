@@ -1,0 +1,14 @@
+#ifndef TEMP_HUM_SENSOR_H
+#define TEMP_HUM_SENSOR_H
+
+typedef nx_struct data {
+	nx_uint8_t data_type;
+	nx_uint16_t data_id;
+	nx_uint16_t value;
+} data_t;
+
+enum{
+AM_DATA = 6,
+};
+
+#endif

@@ -1,0 +1,23 @@
+#include "TempHumSensor.h"
+
+configuration SensorNetworkAppC {
+
+
+}implementation {
+
+  components MainC, SensorNetworkC as App;
+  components new TimerMilliC();
+  components new TempHumSensorC();
+
+  //Boot interface
+  App.Boot -> MainC.Boot;
+
+  //Timer interface
+  App.MilliTimer -> TimerMilliC;
+
+  //Sensor read
+  App.TempRead -> TempHumSensorC.TempRead;
+  App.HumRead -> TempHumSensorC.HumRead;
+  App.AMControl -> TempHumSensorC.SplitControl;
+}
+
