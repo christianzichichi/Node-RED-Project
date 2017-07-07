@@ -10,7 +10,7 @@ Technologies used: nesC,TinyOS, Cooja Simulator (on Ubuntu 12.04), JavaScript, N
 
 Technologies studied (but not specifically used in the project): Python, TOSSIM, Node.js, WebSockets, Plotly
 
-# PROJECT SETUP
+# PROJECT SETUP - CAREFULLY READ THESE INSTRUCTIONS:
 
 1- Open a terminal and run:
 
@@ -22,9 +22,9 @@ sudo /home/user/node-v0.10.36-linux-x86/bin/npm install -g node-red-contrib-goog
 
 4- Double-click on BOTH email nodes and fill the fields:
 
-	To: noderedproject@gmail.com 
-	Username: noderedproject@gmail.com 
-	Password: project3
+    To: noderedproject@gmail.com 
+    Username: noderedproject@gmail.com 
+    Password: project3
 
 Then click Deploy.
 
@@ -32,15 +32,17 @@ Then click Deploy.
 
 5- Go to www.gmail.com and login with: 
 
-	Username: noderedproject@gmail.com 
-	Password: project3
+    Username: noderedproject@gmail.com 
+    Password: project3
 
 6- WAIT for a message to arrive on the Node-RED debug output console, then open two new tabs and go to:
 
-	http://localhost:1880/temperature 
-	http://localhost:1880/humidity
+    http://localhost:1880/temperature 
+    http://localhost:1880/humidity
  
 Additional notes: Files will be written to the directory $HOME  
-	          If you want to start over the simulation, delete all the created files and close the terminal in which you started node-red and restart it 
-	          (refreshing the webpages is not enough).
+              If you want to start over the simulation, delete all the created files and close the terminal in which you started node-red and restart it 
+              (refreshing the webpages is not enough).
+
+
 
