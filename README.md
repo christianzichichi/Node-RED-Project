@@ -10,7 +10,7 @@ Technologies used: nesC,TinyOS, Cooja Simulator (on Ubuntu 12.04), JavaScript, N
 
 Technologies studied (but not specifically used in the project): Python, TOSSIM, Node.js, WebSockets, Plotly
 
-# PROJECT SETUP - CAREFULLY READ THESE INSTRUCTIONS:
+# PROJECT SETUP:
 
 1- Open a terminal and run:
 
